@@ -1,0 +1,64 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
+interface Pixel {
+    id: number
+    x: number
+    y: number
+    size: number
+    speed: number
+}
+
+export default function FloatingPixels () {
+    const [pixels, setPixels] = useState<Pixel[]>([])
+
+    useEffect(() => {
+        const createPixels = () => {
+            const newPixels: Pixel[] = []
+            for (let i = 0; i < 40; i++) {
+                newPixels.push({
+                    id: i,
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    size: Math.random() * 4 + 2,
+                    speed: Math.random() * 0.5 + 0.1,
+                })
+            }
+            setPixels(newPixels)
+        }
+
+        createPixels()
+
+        const animatePixels = () => {
+            setPixels((prevPixels) =>
+                prevPixels.map((pixel) => ({
+                    ...pixel,
+                    y: pixel.y - pixel.speed,
+                    x: pixel.x + Math.sin(pixel.y * 0.1) * 0.5,
+                }))
+            )
+        }
+
+        const intervalId = setInterval(animatePixels, 50)
+
+        return () => clearInterval(intervalId)
+    }, [])
+
+    return (
+        <div className="fixed inset-0 pointer-events-none">
+            {pixels.map((pixel) => (
+                <div
+                    key={pixel.id}
+                    className="absolute bg-purple-600 opacity-40 -z-10"
+                    style={{
+                        left: `${pixel.x}px`,
+                        top: `${pixel.y}px`,
+                        width: `${pixel.size}px`,
+                        height: `${pixel.size}px`,
+                    }}
+                />
+            ))}
+        </div>
+    )
+}
