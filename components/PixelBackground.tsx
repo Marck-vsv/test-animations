@@ -16,7 +16,7 @@ export default function FloatingPixels () {
     useEffect(() => {
         const createPixels = () => {
             const newPixels: Pixel[] = []
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 200; i++) {
                 newPixels.push({
                     id: i,
                     x: Math.random() * window.innerWidth,
@@ -27,7 +27,7 @@ export default function FloatingPixels () {
             }
             setPixels(newPixels)
         }
-
+        
         createPixels()
 
         const animatePixels = () => {
