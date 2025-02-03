@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export default function FormaFoda({
+export default function AnimatedShape({
     className,
     delay = 0,
     width = 400,

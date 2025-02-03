@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Pacifico, JetBrains_Mono, Poppins } from "next/font/google";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import FormaFoda from "@/components/FormaFoda";
+import AnimatedShape from "@/components/AnimatedShape";
 
 const pacifico = Pacifico({
     subsets: ["latin"],
@@ -24,17 +24,7 @@ const poppins = Poppins({
     variable: "--font-poppins",
 })
 
-export default function Home ({
-    badge="Pato quac",
-    title1="Eu sou o frontendo",
-    title2="Alguem me mata",
-    desc="fazendo patinhos quack quack quack"
-}: {
-    badge?: string;
-    title1?: string;
-    title2?: string;
-    desc?: string;
-}) {
+export default function Home () {
     const fadeUpVariants = {
         hidden: {
             opacity: 0,
@@ -62,7 +52,7 @@ export default function Home ({
             <div
                 className="absolute inset-0 overflow-hidden"
             >
-                <FormaFoda
+                <AnimatedShape
                     delay={.4}
                     width={600}
                     height={140}
@@ -71,7 +61,7 @@ export default function Home ({
                     className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
                 />
 
-                <FormaFoda
+                <AnimatedShape
                     delay={.3}
                     width={400}
                     height={140}
@@ -80,7 +70,7 @@ export default function Home ({
                     className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
                 />
 
-                <FormaFoda
+                <AnimatedShape
                     delay={.1}
                     width={600}
                     height={140}
@@ -89,7 +79,7 @@ export default function Home ({
                     className="right-[-15%] md:right-[-15%] top-[50%] md:top-[25%]"
                 />
 
-                <FormaFoda
+                <AnimatedShape
                     delay={.3}
                     width={250}
                     height={140}
@@ -98,7 +88,7 @@ export default function Home ({
                     className="right-[50%] md:right-[35%] top-[50%] md:top-[50%]"
                 />
 
-                <FormaFoda
+                <AnimatedShape
                     delay={.3}
                     width={400}
                     height={140}
@@ -107,7 +97,7 @@ export default function Home ({
                     className="left-[-5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
                 />
 
-                <FormaFoda
+                <AnimatedShape
                     delay={.5}
                     width={550}
                     height={140}
@@ -123,6 +113,7 @@ export default function Home ({
                 <div
                     className="max-w-3xl mx-auto text-center"
                 >
+                    {/* Badge */}
                     <motion.div
                         custom={0}
                         variants={fadeUpVariants}
@@ -137,12 +128,13 @@ export default function Home ({
                             height={20}
                         />
                         
+                        {/* Badge Text */}
                         <span
                             className={cn(
                                 "text-sm text-white/[.6] tracking-wide", jetbrainsMono.className
                             )}
                         >
-                            {badge}
+                            Marquin
                         </span>
                     </motion.div>
 
@@ -152,41 +144,46 @@ export default function Home ({
                         initial="hidden"
                         animate="visible"
                     >
+                        {/* Title */}
                         <h1
                             className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight"
                         >
+                            {/* Gradient Text */}
                             <span
                                 className={cn(
                                     "bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80",
                                     poppins.className
                                 )}    
                             >
-                                {title1}
+                                Lorem ipsum
                             </span>
 
                             <br />
 
+                            {/* Gradient Text */}
                             <span
                                 className={cn(
                                     "bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-300 via-white/90 to-purple-600",
                                     pacifico.className
                                 )}
                             >
-                                {title2}
+                                dolor sit amet
                             </span>
                         </h1>
                     </motion.div>
 
+                    {/* Subtitle */}
                     <motion.div
                         custom={2}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                     >
+                        {/* Description */}
                         <p
                             className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4"
                         >
-                            {desc}
+                            fazendo patinhos quack quack quack
                         </p>
                     </motion.div>
                 </div>
